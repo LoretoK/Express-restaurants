@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const {Restaurant, Menu, Item} = require('restaurants')
 const restaurantRoutes = require('./routes/restaurants')
 const menuRoutes = require('./routes/menus')
@@ -8,7 +9,7 @@ const port = process.env.port || 3000;
 
 //a web server serving static pages
 app.use(express.static('public'));
-
+app.use(cors()); // allows us to use the server on my computer
 //this encoudes and decodes our json
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
@@ -29,3 +30,4 @@ app.listen(port, () => {
 })
 
 //In the code above we configure the server to serve static assets from the public/ folder and to run locally on port 3000.
+//pushed to git
